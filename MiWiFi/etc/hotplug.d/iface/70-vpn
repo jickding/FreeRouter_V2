@@ -1,0 +1,13 @@
+#!/bin/sh
+
+[ "$ACTION" = "ifdown" ] && [ "$INTERFACE" = "vpn" ] && {
+	if [ -f /etc/ppp/ip-down.d/vpndown.sh ]; then
+		. /etc/ppp/ip-down.d/vpndown.sh
+	fi
+}
+
+[ "$ACTION" = "ifup" ] && [ "$INTERFACE" = "vpn" ] && {
+	if [ -f /etc/ppp/ip-up.d/vpnup.sh ]; then
+		. /etc/ppp/ip-up.d/vpnup.sh
+	fi
+}

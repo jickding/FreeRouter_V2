@@ -1,0 +1,13 @@
+#
+# reserved values
+#
+255	local
+254	main
+253	default
+252	vpn
+251	gfw
+0	unspec
+#
+# local
+#
+#1	inr.ruhep
