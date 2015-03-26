@@ -1,6 +1,8 @@
 #!/bin/sh
 set -x
 LOG='/tmp/vpn.log'
+echo "\$Log: Set pptp-vpn MTU" >>$LOG
+ifconfig pptp-vpn mtu 1280
 echo "\$Log: VPN Connected! @$(date +"%T@%Y-%m-%d")" >>$LOG
 VPN_DEV=$(ifconfig | grep "pptp" | sed -e "s#^\([^ ]*\) .*#\1#g")
 echo "\$Log: Delete default route!" >>$LOG

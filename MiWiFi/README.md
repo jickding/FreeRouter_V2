@@ -7,6 +7,7 @@ FreeRouter_V2 for MiWiFi
 3. 为避免冲突，`/etc/iproute2/rt_tables` 需要增加`gfw`路由表，因为小米路由器已经存在一个`vpn`路由表
 4. `/etc/config/dhcp`中需要增加`option conf-dir '/etc/dnsmasq.d'`
 5. `/etc/dnsmasq.d/option.conf`中增加`all-servers`
+6. 增加MTU的设置（云梯需要设置1280，否则twitter图片看不了)
 
 ## gfw.conf更新
 > 增加了根据gfwlist项目，更新域名列表的脚本,考虑到小米路由器cpu还是太弱，这种通过gfwlist转换ipset配置的脚本，我是跑在自己的MBP上，自动push到github，然后小米路由器通过crontab定时更新文件。
