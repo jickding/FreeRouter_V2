@@ -13,7 +13,7 @@ FreeRouter_V2 for MiWiFi
 > 增加了根据gfwlist项目，更新域名列表的脚本,考虑到小米路由器cpu还是太弱，这种通过gfwlist转换ipset配置的脚本，我是跑在自己的MBP上，自动push到github，然后小米路由器通过crontab定时更新文件。
 
 ```bash
-curl -s 'https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt' | base64 -D | grep --color=none -vE "(aspx?|dotn|exe|fan|html?|php|zh)$" | grep --color=none -oE "[a-z0-9]([a-z0-9_\.\-]*[a-z0-9])?\.[a-z]{2,4}" | sort -u | awk '{printf("ipset=/%s/gfw\nserver=/%s/8.8.8.8\n",$0,$0)}' > etc/dnsmasq.d/gfw.conf
+curl -s 'https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt' | base64 -D | grep --color=none -vE '^(!|@@|/|%|\[)' | grep -oE '[a-z0-9]([a-z0-9_\.\-]*[a-z0-9])?\.[a-z]{2,6}' | sort -u | awk '{printf("ipset=/%s/gfw\nserver=/%s/8.8.8.8\n",$0,$0)}' > etc/dnsmasq.d/gfw.conf
 ```
 
 小米路由器时任务，每天两点半自己更新gwf.conf
